@@ -18,12 +18,12 @@ function getLatLon(city,state,isoCode){
         .then(function (data){
             console.log(data);
             data.forEach(result => {
-                console.log(`name: ${result.name} , ${result.country}
+                console.log(`name: ${result.name} ,${result.state} ${result.country}
                 lat: ${result.lat}
                 lon: ${result.lon}`)
                 
             });
-            // fiveDayFetch(data.lat,data.lon);
+            // fiveDayFetch(data[0].lat,data[0].lon);
         });
 };
 
@@ -62,6 +62,30 @@ $(document).ready(function(){
     $('.modal').modal();
     $('select').formSelect();
   });
+
+// Query Selector -- buttons for each search option
+const cityButton = $("#cityButton");
+const zipButton = $('#zipButton');
+// Event Listener that returns the 3 values for getLatLon
+cityButton.click(function(event){
+    event.preventDefault();   
+    let city = $("#cityInput").val();
+    let state = $("#state").val();
+    let country = $("#country").val();
+    console.log(`city: ${city}
+    state: ${state}
+    country: ${country}`)
+    getLatLon(city,state,country);
+});
+zipButton.click(function(event){
+    event.preventDefault();   
+    let zipCode = $("#zip").val();
+    let country = $("#country").val();
+    console.log(`zipcode: ${zipCode}
+    country: ${country}`);
+    zipLatLon(zipCode,country);
+});
+
 // fiveDayFetch(34.063350, -117.652400);
 //  zipLatLon('e14','gb');
 // getLatLon('tyler','Texas','');
