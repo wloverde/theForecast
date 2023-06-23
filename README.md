@@ -1,2 +1,2 @@
 # theForecast
-An Weatehr Forecast page using openWeatherAPI
+An Weather Forecast page using openWeatherAPI.
