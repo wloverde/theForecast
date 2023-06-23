@@ -57,7 +57,11 @@ function fiveDayFetch(lat,lon){
             console.log(data);
         });
 };
-
+//initialize materialize dropdown and Modals
+$(document).ready(function(){
+    $('.modal').modal();
+    $('select').formSelect();
+  });
 // fiveDayFetch(34.063350, -117.652400);
-// zipLatLon('75701','US');
-getLatLon('London','','');
+//  zipLatLon('e14','gb');
+// getLatLon('tyler','Texas','');

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>The Forecast 🌄🌡☁️🌞</title>
     <!-- import Google Icon font -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,10 +12,84 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- link stylesheet -->
     <link rel="stylesheet" href="./assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<body class=" light-blue lighten-4">
+    <!-- Header with refresh link in Title -->
+    <nav class="nav-wrapper light-blue darken-2">
+        <a href="./index.html" class="brand-logo">The Forecast</a>
+    </nav>
+    <!-- Search Button Choice -->
+    <!-- city Search Modal -->
+    <button data-target="city" class="waves-effect waves-light btn modal-trigger light-blue darken-1">Search By
+        City</button>
+    <div id='city' class="modal">
+        <form class="modal-content">
+            <div class="row">
+                <!-- City Name Input -->
+                <div class="input-field col s5" id="title">
+                    <input type="text" class="input-field col s4">
+                    <label>City</label>
+                </div>
 
+                <!-- state input area -->
+                <div class="input-field col s5">
+                    <input type="text" class="input-field col s4" id="state">
+                    <label>State</label>
+                </div>
+
+                <!-- dropdown for Country selection -->
+                <div class="input-field col s2">
+                    <!-- <label>Select Country</label> -->
+                    <select class="browser-default" id="country" name="country">
+                        <option value="">select country</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="US">United States</option>
+                        <option value="UM">United States Minor Outlying Islands</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <footer class="modal-footer">
+            <button class="modal-close waves-effect waves-light-blue light-blue darken-1 btn">Search</button>
+        </footer>
+    </div>
+    <!-- Postal Code Search Modal -->
+    <button data-target="zipCode" class="waves-effect waves-light btn modal-trigger light-blue darken-1">Search By Zip
+        Code</button>
+    <div class="modal" id="zipCode">
+        <form class="modal-content">
+            <div class="row">
+                <!-- Postal Code Input -->
+                <div class="input-field col s6" id="zip">
+                    <input type="text" class="input-field col s6">
+                    <label>Zip/Postal Code</label>
+                </div>
+
+                <!-- dropdown for Country selection -->
+                <div class="input-field col s6">
+                    <!-- <label>Select Country</label> -->
+                    <select class="browser-default" id="country" name="country">
+                        <option value="">select country</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="US">United States</option>
+                        <option value="UM">United States Minor Outlying Islands</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <footer class="modal-footer">
+            <button class="modal-close waves-effect waves-light btn light-blue darken-1">Search</button>
+        </footer>
+    </div>
+
+    
+
+
+
+    <!-- Link JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <!-- link Materialize JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- link script.js -->
