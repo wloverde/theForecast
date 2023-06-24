@@ -55,8 +55,28 @@ function fiveDayFetch(lat,lon){
         })
         .then(function (data){
             console.log(data);
+            // adds search results to local storage
+            localResults(data.city.coord.lat,data.city.coord.lon,data.city.name)
         });
 };
+
+function localResults(lat,lon,name){
+    // Array 
+    let previousSearchs = [];
+    previousSearchs = (JSON.parse(localStorage.getItem("results")));
+    if (previousSearchs === null){
+        previousSearchs = [];
+    }
+    // creates a new object with search parameters for fiveDayFetch() to append to Local Storage
+    let newResults = {
+        name: name,
+        lat: lat,
+        lon: lon
+    }
+    previousSearchs.push(newResults);
+    console.log(previousSearchs);
+    localStorage.setItem('results', JSON.stringify(previousSearchs));
+}
 //initialize materialize dropdown and Modals
 $(document).ready(function(){
     $('.modal').modal();
