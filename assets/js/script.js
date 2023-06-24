@@ -61,9 +61,9 @@ function fiveDayFetch(lat,lon){
 };
 
 function localResults(lat,lon,name){
-    // Array 
-    let previousSearchs = [];
-    previousSearchs = (JSON.parse(localStorage.getItem("results")));
+
+    let previousSearchs = (JSON.parse(localStorage.getItem("results")));
+    // init local storage as an Array of results
     if (previousSearchs === null){
         previousSearchs = [];
     }
@@ -73,6 +73,7 @@ function localResults(lat,lon,name){
         lat: lat,
         lon: lon
     }
+    // push new object to 
     previousSearchs.push(newResults);
     console.log(previousSearchs);
     localStorage.setItem('results', JSON.stringify(previousSearchs));
