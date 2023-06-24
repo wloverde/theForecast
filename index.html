@@ -20,22 +20,31 @@
     <nav class="nav-wrapper light-blue darken-2">
         <a href="./index.html" class="brand-logo">The Forecast</a>
     </nav>
+    <h1></h1>
     <!-- Search Button Choice -->
-    <!-- city Search Modal -->
-    <button data-target="city" class="waves-effect waves-light btn modal-trigger light-blue darken-1">Search By
-        City</button>
+    <div class="center">
+        <!-- city Search Modal -->
+        <button data-target="city" class="waves-effect waves-light btn-large modal-trigger light-blue darken-1">Search
+            By
+            City</button>
+        <!-- Postal Code Search Modal -->
+        <button data-target="zipCode"
+            class="waves-effect waves-light btn-large modal-trigger light-blue darken-1">Search By
+            ZipCode</button>
+    </div>
+    <!-- City Search Modal -->
     <div id='city' class="modal">
         <form class="modal-content">
             <div class="row">
                 <!-- City Name Input -->
-                <div class="input-field col s5" >
-                    <input type="text" class="input-field col s4" id="cityInput">
+                <div class="input-field col s5">
+                    <input type="text" class="input-field col s4 dark-blue" id="cityInput">
                     <label>City</label>
                 </div>
 
                 <!-- state input area -->
                 <div class="input-field col s5">
-                    <input type="text" class="input-field col s4" id="state">
+                    <input type="text" class="input-field col s4 dark-blue" id="state">
                     <label>State</label>
                 </div>
 
@@ -52,17 +61,16 @@
             </div>
         </form>
         <footer class="modal-footer">
-            <button class="modal-close waves-effect waves-light-blue light-blue darken-1 btn" id="cityButton"><i class="material-icons left">search</i>Search</button>
+            <button class="modal-close waves-effect waves-light-blue light-blue darken-1 btn" id="cityButton"><i
+                    class="material-icons left">search</i>Search</button>
         </footer>
     </div>
     <!-- Postal Code Search Modal -->
-    <button data-target="zipCode" class="waves-effect waves-light btn modal-trigger light-blue darken-1">Search By Zip
-        Code</button>
     <div class="modal" id="zipCode">
         <form class="modal-content">
             <div class="row">
                 <!-- Postal Code Input -->
-                <div class="input-field col s6" >
+                <div class="input-field col s6">
                     <input type="text" class="input-field col s6" id="zip">
                     <label>Zip/Postal Code</label>
                 </div>
@@ -80,11 +88,13 @@
             </div>
         </form>
         <footer class="modal-footer">
-            <button class="modal-close waves-effect waves-light btn light-blue darken-1" id="zipButton"><i class="material-icons left">search</i>Search</button>
+            <button class="modal-close waves-effect waves-light btn light-blue darken-1" id="zipButton"><i
+                    class="material-icons left">search</i>Search</button>
         </footer>
     </div>
-
     
+
+
 
 
 
