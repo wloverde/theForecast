@@ -11,7 +11,7 @@ function getLatLon(city, state, isoCode) {
     queryParam = queryParam.join();
 
     let fetchURL = `https://api.openweathermap.org/geo/1.0/direct?q=${queryParam}&limit=5&appid=${apiKey}`;
-
+    resultsEL.innerHTML ='';
     fetch(fetchURL)
         .then(function (response) {
             return response.json();
@@ -28,7 +28,11 @@ function getLatLon(city, state, isoCode) {
                 resultButton.setAttribute("value", resultValue);
                 resultButton.setAttribute("class", "modal-close waves-effect waves-light btn-large light-blue darken-1");
                 resultButton.setAttribute("style", "margin:5px");
+                if (result.state===undefined){
+                    resultButton.textContent = `${result.name}, ${result.country}`;
+                } else {
                 resultButton.textContent = `${result.name}, ${result.state} ${result.country}`;
+                }
                 searchResults.appendChild(resultButton);
             });
             // fiveDayFetch(data[0].lat,data[0].lon);
