@@ -61,7 +61,7 @@ function zipLatLon(zipCode, isoCode) {
     queryParam = queryParam.filter(blank => blank.length > 0);
     // concat into a string with a comma following each index
     queryParam = queryParam.join();
-    let fetchURL = `http://api.openweathermap.org/geo/1.0/zip?zip=${queryParam}&appid=${apiKey}`;
+    let fetchURL = `https://api.openweathermap.org/geo/1.0/zip?zip=${queryParam}&appid=${apiKey}`;
 
     fetch(fetchURL)
         .then(function (response) {
@@ -81,7 +81,7 @@ function fiveDayFetch(lat, lon) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            // console.log(data);  //this data is primary use obj
             // adds search results to local storage
             localResults(data.city.coord.lat, data.city.coord.lon, data.city.name);
             populateCard(data);
@@ -94,25 +94,48 @@ function populateCard(dataObj) {
     let weatherCards = ``;
     let weatherList = dataObj.list;
     for (let index = 0; index < weatherList.length; index++) {
-        let headerEL = weatherList[index].dt_txt.split(' ')[0];
-        if (index===0){
-            weatherCards += `<div id='day' class="card">
+        let headerEL = weatherList[index].dt_txt.split(' ');
+
+        if (index === 0) {
+            weatherCards += `<div id='day' class="card col s3 center">
+                <div class="card-content blue white-text">
+                <h3>${headerEL[0]}</h3>
+                <h4 class="darker-blue lighten-2">${headerEL[1]}</h4>
+                <p>Temp high: ${weatherList[index].main.temp_max}</p>
+                <p>Real Feel: ${weatherList[index].main.feels_like}</p>
+                <p>Temp Low: ${weatherList[index].main.temp_min}</p>
+                <h5>Weather Details</h5>
+                <p>${weatherList[index].weather[0].description}</p>
+                </div>
+            </div>`
+        } else if ((index % 8) === 0)  {
+            weatherCards += `<div id='day' class="card col s3 center">
+                <div class="card-content blue white-text">
+                <h3>${headerEL[0]}</h3>
+                <h4 class="darker-blue lighten-2">${headerEL[1]}</h4>
+                <p>Temp high: ${weatherList[index].main.temp_max}</p>
+                <p>Real Feel: ${weatherList[index].main.feels_like}</p>
+                <p>Temp Low: ${weatherList[index].main.temp_min}</p>
+                <h5>Weather Details</h5>
+                <p>${weatherList[index].weather[0].description}</p>
+                </div>
+            </div>`
+            
+        } else  {
+            weatherCards += `<div id='day' class="card col s3 center">
             <div class="card-content blue white-text">
-                <h3>${headerEL}</h3>
-                
-            </div>
-        </div>`
-        } else if ((index%8)===0){
-            weatherCards += `<div id='day' class="card">
-            <div class="card-content blue white-text">
-                <h3>${headerEL}</h3>
-                
-            </div>
-        </div>`
+            <h4 class="darker-blue lighten-2">${headerEL[1]}</h4>
+                <p>Temp high: ${weatherList[index].main.temp_max}</p>
+                <p>Real Feel: ${weatherList[index].main.feels_like}</p>
+                <p>Temp Low: ${weatherList[index].main.temp_min}</p>
+                <h5>Weather Details</h5>
+                <p>${weatherList[index].weather[0].description}</p>
+                </div>
+            </div>`
         }
     }
-    // populate forecastCard with data
-    let cardContent = `
+        // populate forecastCard with data
+        let cardContent = `
                 <div class="card-content white-text">
                     <h1>${dataObj.city.name}</h1>
                     <p>we can put some general weather information here!!</p>
@@ -121,10 +144,10 @@ function populateCard(dataObj) {
                     ${weatherCards}
                 </div>
                 `
-    $('#weather').append(cardContent);
+        $('#weather').append(cardContent);
 
+   
 }
-
 // function that adds selected search into local storage
 function localResults(lat, lon, name) {
     let previousSearchs = (JSON.parse(localStorage.getItem("results")));
