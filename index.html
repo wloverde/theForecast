@@ -16,9 +16,16 @@
 </head>
 
 <body class=" light-blue lighten-4">
+    <ul id="pastSearch" class="dropdown-content collection center">
+        <!-- Local storage serachs populate here -->
+    </ul>
     <!-- Header with refresh link in Title -->
     <nav class="nav-wrapper light-blue darken-2">
         <a href="./index.html" class="brand-logo">The Forecast</a>
+        <ul class="right">
+            <li><a class="dropdown-trigger" href="#!" data-target="pastSearch">Recent Searches<i
+                        class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
     </nav>
     <h1></h1>
     <!-- Search Button Choice -->
@@ -79,7 +86,7 @@
                 <!-- dropdown for Country selection -->
                 <div class="input-field col s6">
                     <!-- <label>Select Country</label> -->
-                    <select class="browser-default" id="country">
+                    <select class="browser-default" id="country2">
                         <option value="">select country</option>
                         <option value="GB">United Kingdom</option>
                         <option value="US">United States</option>
@@ -104,6 +111,10 @@
         </footer>
     </div>
 
+    <!-- Selected result displays here -->
+    <div id="weather" class="card light-blue">
+
+    </div>
 
 
 
