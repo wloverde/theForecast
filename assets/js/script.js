@@ -61,7 +61,7 @@ function zipLatLon(zipCode, isoCode) {
     queryParam = queryParam.filter(blank => blank.length > 0);
     // concat into a string with a comma following each index
     queryParam = queryParam.join();
-    let fetchURL = `http://api.openweathermap.org/geo/1.0/zip?zip=${queryParam}&appid=${apiKey}`;
+    let fetchURL = `https://api.openweathermap.org/geo/1.0/zip?zip=${queryParam}&appid=${apiKey}`;
 
     fetch(fetchURL)
         .then(function (response) {
